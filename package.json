@@ -1,0 +1,20 @@
+{
+	"name": "wokdiscordbotv2",
+	"version": "1.0.0",
+	"description": "https://www.youtube.com/watch?v=JMmUW4d3Noc&list=PLaxxQQak6D_f4Z5DtQo0b1McgjLVHmE8Q",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^13.6.0",
+		"dotenv": "^16.0.0",
+		"mongoose": "^6.2.10",
+		"nodemon": "^2.0.15",
+		"wokcommands": "^1.5.3"
+	}
+}
