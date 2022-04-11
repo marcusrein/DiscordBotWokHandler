@@ -8,7 +8,7 @@ export default {
 		message.reply("Please confirm this action");
 		message.react("😀");
 
-		// MESSAGE COLLECTOR
+		// MESSAGE COLLECTOR. FILTER MAKES SURE MESSAGES BEING COLLECTED ARE ACTUALLY FROM PERSON WHO SENT THE COMMAND
 
 		// const filter = (m: Message) => {
 		// 	return m.author.id === message.author.id;
@@ -19,6 +19,8 @@ export default {
 		// 	max: 1,
 		// 	time: 1000 * 5,
 		// });
+
+		// REACTION COLLECTOR
 
 		const filter = (reaction: MessageReaction, user: User) => {
 			return user.id === message.author.id;

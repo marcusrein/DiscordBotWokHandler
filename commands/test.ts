@@ -35,6 +35,7 @@ export default {
 		);
 		await msgInt.reply({
 			content: "Ban the user?",
+			// HOW YOU WANT THE COMPONENTS ARRANGED IN A ROW
 			components: [row, linkRow],
 			ephemeral: true,
 		});
