@@ -18,6 +18,11 @@ const client = new DiscordJS.Client({
 client.on("ready", async () => {
 	console.log("The Bot is ready");
 
+	const guildId = "957994950711193600";
+	const guild = client.guilds.cache.get(guildId);
+	let commands;
+
+	// MONGOOSE USEAGE IF NOT WANTING TO USE WOKCommands
 	// await mongoose.connect(process.env.DATABASE_URI || "", {
 	// 	keepAlive: true,
 	// });
@@ -34,73 +39,73 @@ client.on("ready", async () => {
 		},
 	});
 
+	// SIMULATES WAITING FOR API WITH TIMEOUT. UNSURE HOW TO IMPLEMENT THIS WITH MONGODB.
 	setTimeout(async () => {
 		await new testSchema({
 			message: "hello world!",
 		}).save();
 	}, 1000);
 
-	const guildId = "957994950711193600";
-	const guild = client.guilds.cache.get(guildId);
-	let commands;
-
+	// ASSIGNS OUR COMMANDS TO CLIENT IF WE HAVE A GUILD ASSIGNED
 	if (guild) {
 		commands = guild.commands;
 	} else {
 		commands = client.application?.commands;
 	}
 
+	// TRANSFERRED OVER TO COMMANDS FOLDER
+
 	// commands?.create({
 	// 	name: "ping",
 	// 	description: "Replies with pong",
 	// });
 
-	commands?.create({
-		name: "add",
-		description: "Adds two numbers",
-		options: [
-			{
-				name: "num1",
-				description: "The first number",
-				required: true,
-				type: DiscordJS.Constants.ApplicationCommandOptionTypes.NUMBER,
-			},
-			{
-				name: "num2",
-				description: "The second number",
-				required: true,
-				type: DiscordJS.Constants.ApplicationCommandOptionTypes.NUMBER,
-			},
-		],
-	});
-});
-
-client.on("interactionCreate", async (interaction) => {
-	if (!interaction.isCommand()) {
-		return;
-	}
-
-	const { commandName, options } = interaction;
-
-	// if (commandName === "ping") {
-	// 	await interaction.editReply({
-	// 		content: "pong",
+	// 	commands?.create({
+	// 		name: "add",
+	// 		description: "Adds two numbers",
+	// 		options: [
+	// 			{
+	// 				name: "num1",
+	// 				description: "The first number",
+	// 				required: true,
+	// 				type: DiscordJS.Constants.ApplicationCommandOptionTypes.NUMBER,
+	// 			},
+	// 			{
+	// 				name: "num2",
+	// 				description: "The second number",
+	// 				required: true,
+	// 				type: DiscordJS.Constants.ApplicationCommandOptionTypes.NUMBER,
+	// 			},
+	// 		],
 	// 	});
-	if (commandName === "add") {
-		const num1 = options.getNumber("num1")!;
-		const num2 = options.getNumber("num2")!;
-
-		await interaction.deferReply({
-			ephemeral: true,
-		});
-
-		await new Promise((resolve) => setTimeout(resolve, 5000));
-
-		await interaction.editReply({
-			content: `The sum is ${num1 + num2}`,
-		});
-	}
 });
+
+// client.on("interactionCreate", async (interaction) => {
+// 	if (!interaction.isCommand()) {
+// 		return;
+// 	}
+
+// 	const { commandName, options } = interaction;
+
+// if (commandName === "ping") {
+// 	await interaction.editReply({
+// 		content: "pong",
+// 	});
+// if (commandName === "add") {
+// 	const num1 = options.getNumber("num1")!;
+// 	const num2 = options.getNumber("num2")!;
+
+// 	await interaction.deferReply({
+// 		ephemeral: true,
+// 	});
+
+// 	await new Promise((resolve) => setTimeout(resolve, 5000));
+
+// 	await interaction.editReply({
+// 		content: `The sum is ${num1 + num2}`,
+// 	});
+// }
+// });
 
 // client.on("messageCreate", (message) => {
 // 	if (message.content === "ping") {

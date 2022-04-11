@@ -16,6 +16,7 @@ export default {
 			.addComponents(
 				new MessageButton()
 					.setCustomId("ban_yes")
+					.setEmoji("😤")
 					.setLabel("Confirm")
 					.setStyle("SUCCESS")
 			)
@@ -33,18 +34,24 @@ export default {
 				.setStyle("LINK")
 		);
 		await msgInt.reply({
-			content: "Are you sure?",
+			content: "Ban the user?",
 			components: [row, linkRow],
 			ephemeral: true,
 		});
+
+		// FILTER CREATED TO MAKE SURE PERSON REACTING TO THE BUTTON IS THE SAME PERSON WHO RANG THIS COMMAND INITIALLY
 
 		const filter = (btnInt: Interaction) => {
 			return msgInt.user.id === btnInt.user.id;
 		};
 
+		// NOW CREATING COLLECTOR USING THE FILTER. THIS WILL LISTEN FOR THE EVENT, THEN COLLECT THE INTERACTION
+
 		const collector = channel.createMessageComponentCollector({
 			filter,
+			// MAX NUMBER OF BUTTONS USER CAN CLICK
 			max: 1,
+			// HOW LONG THEY HAVE TO CLICK
 			time: 10000 * 15,
 		});
 
@@ -52,15 +59,17 @@ export default {
 			i.reply({ content: "You clicked a button", ephemeral: true });
 		});
 
+		// LOGIC FOR AFTER BUTTON PRESSES OCCURS HERE. ASYNC USED TO EDIT REPLY AFTER THE BUTTON PRESS AND REMOVE CHOICES FROM SCREEN.
+
 		collector.on("end", async (collection) => {
 			collection.forEach((click) => {
 				console.log(click.user.id, click.customId);
 			});
 			if (collection.first()?.customId === "ban_yes") {
-				//ban the user
+				//ban the user logic would go here
 			}
 			await msgInt.editReply({
-				content: "An action has already been taken",
+				content: "Thank you for your help banning this awful person",
 				components: [],
 			});
 		});
