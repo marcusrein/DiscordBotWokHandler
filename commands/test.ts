@@ -29,7 +29,8 @@ export default {
 
 		const linkRow = new MessageActionRow().addComponents(
 			new MessageButton()
-				.setURL("https://tinyurl.com/2j7yhp5t")
+				.setURL("https://emblemdao.com")
+				// .setURL("https://tinyurl.com/2j7yhp5t")
 				.setLabel("Visit EmblemDAO")
 				.setStyle("LINK")
 		);

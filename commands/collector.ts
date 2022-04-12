@@ -4,6 +4,9 @@ import { ICommand } from "wokcommands";
 export default {
 	category: "Testing",
 	description: "Testing",
+	testOnly: true,
+	ephemeral: true,
+
 	callback: ({ message, channel }) => {
 		message.reply("Please confirm this action");
 		message.react("😀");
@@ -29,7 +32,7 @@ export default {
 		const collector = message.createReactionCollector({
 			filter,
 			max: 1,
-			time: 1000 * 5,
+			time: 1000 * 20,
 		});
 		collector.on("collect", (reaction) => {
 			console.log(reaction.emoji);
