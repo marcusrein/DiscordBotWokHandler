@@ -2,7 +2,7 @@ import DiscordJS, { Intents } from "discord.js";
 import dotenv from "dotenv";
 import WOKCommands from "wokcommands";
 import path from "path";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import testSchema from "./test-schema";
 
 dotenv.config();
@@ -22,24 +22,26 @@ client.on("ready", async () => {
 	const guild = client.guilds.cache.get(guildId);
 	let commands;
 
-	// MONGOOSE USEAGE IF NOT WANTING TO USE WOKCommands
-	// await mongoose.connect(process.env.DATABASE_URI || "", {
-	// 	keepAlive: true,
-	// });
-
 	new WOKCommands(client, {
 		// The name of the local folder for your command files
 		commandsDir: path.join(__dirname, "commands"),
 		// Allow importing of .ts files if you are using ts-node
 		typeScript: true,
 		testServers: ["957994950711193600"],
-		mongoUri: process.env.DATABASE_URI,
-		dbOptions: {
-			keepAlive: true,
-		},
+
+		// Allow easy Database connections:
+		// mongoUri: process.env.DATABASE_URI,
+		// dbOptions: {
+		// 	keepAlive: true,
+		// },
 	});
 
-	// SIMULATES WAITING FOR API WITH TIMEOUT. UNSURE HOW TO IMPLEMENT THIS WITH MONGODB.
+	// Mongoose Code If not wanting to use WOKCommands
+	// await mongoose.connect(process.env.DATABASE_URI || "", {
+	// 	keepAlive: true,
+	// });
+
+	// SIMULATES WAITING FOR API WITH TIMEOUT. UNSURE HOW TO IMPLEMENT THIS WITH MONGODB+WOKCommands.
 	setTimeout(async () => {
 		await new testSchema({
 			message: "hello world!",
@@ -53,7 +55,7 @@ client.on("ready", async () => {
 		commands = client.application?.commands;
 	}
 
-	// TRANSFERRED OVER TO COMMANDS FOLDER
+	// TRANSFERRED THIS CODE VVVV OVER TO COMMANDS FOLDER.
 
 	// commands?.create({
 	// 	name: "ping",
