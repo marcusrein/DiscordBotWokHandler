@@ -1,4 +1,6 @@
 import {
+	Client,
+	GuildMember,
 	MessageActionRow,
 	MessageSelectMenu,
 	MessageSelectOptionData,
@@ -23,6 +25,33 @@ export default {
 	testOnly: true,
 	guildOnly: true,
 
+	init: (client: Client) => {
+		client.on("interactionCreate", (interaction) => {
+			if (!interaction.isSelectMenu()) {
+				return;
+			}
+
+			const { customId, values, member } = interaction;
+
+			if (customId === "auto_roles" && member instanceof GuildMember) {
+				const component = interaction.component as MessageSelectMenu;
+				const removed = component.options.filter((option) => {
+					return !values.includes(option.value);
+				});
+				for (const id of removed) {
+					member.roles.remove(id.value);
+				}
+
+				for (const id of values) {
+					member.roles.add(id);
+				}
+				interaction.reply({
+					content: "Roles update!",
+					ephemeral: true,
+				});
+			}
+		});
+	},
 	callback: async ({ message, interaction, args, client }) => {
 		const channel = (
 			message
@@ -80,8 +109,28 @@ export default {
 					};
 				}
 			}
+			menu.addOptions(option);
+			menu.setMaxValues(menu.options.length);
+		} else {
+			row.addComponents(
+				new MessageSelectMenu()
+					.setCustomId("auto_roles")
+					.setMinValues(0)
+					.setMaxValues(1)
+					.setPlaceholder("Select your roles...")
+					.addOptions(option)
+			);
 		}
-		menu.addOptions(options);
-		menu.setMaxValues;
+		targetMessage.edit({
+			components: [row],
+		});
+		return {
+			custom: true,
+			content: `Added <@&{role.id}> to the auto roles menu.`,
+			allowedMentions: {
+				roles: [],
+			},
+			ephemeral: true,
+		};
 	},
 } as ICommand;
