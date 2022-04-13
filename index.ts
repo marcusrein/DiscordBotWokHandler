@@ -42,11 +42,11 @@ client.on("ready", async () => {
 	// });
 
 	// SIMULATES WAITING FOR API WITH TIMEOUT. UNSURE HOW TO IMPLEMENT THIS WITH MONGODB+WOKCommands.
-	setTimeout(async () => {
-		await new testSchema({
-			message: "hello world!",
-		}).save();
-	}, 1000);
+	// setTimeout(async () => {
+	// 	await new testSchema({
+	// 		message: "hello world!",
+	// 	}).save();
+	// }, 1000);
 
 	// ASSIGNS OUR COMMANDS TO CLIENT IF WE HAVE A GUILD ASSIGNED
 	if (guild) {
