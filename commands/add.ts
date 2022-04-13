@@ -4,6 +4,8 @@ import { ICommand } from "wokcommands";
 export default {
 	category: "Testing",
 	description: "Testing",
+
+	// slash: "both" means both slash commands and legacy exclamation point commands work
 	slash: "both",
 	testOnly: true,
 

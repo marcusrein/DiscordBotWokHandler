@@ -1,7 +1,7 @@
 import { MessageEmbed } from "discord.js";
 import { ICommand } from "wokcommands";
 
-// TUTORIAL HAS SOMETHING ABOUT JSON DATA - UNSURE HOW TO IMPLEMENT. COULDNT GET IT TO WORK.
+// TUTORIAL HAS SOMETHING ABOUT JSON DATA - UNSURE HOW TO IMPLEMENT JSON DATA. COULDNT GET JSON TO WORK BUT EMBED WORKDS.
 
 export default {
 	category: "Testing",

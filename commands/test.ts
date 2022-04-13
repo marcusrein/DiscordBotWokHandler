@@ -6,6 +6,8 @@ import {
 } from "discord.js";
 import { ICommand } from "wokcommands";
 
+// BUTTON CREATION
+
 export default {
 	category: "testing",
 	description: "testing",
@@ -31,6 +33,9 @@ export default {
 			new MessageButton()
 				.setURL("https://emblemdao.com")
 				// .setURL("https://tinyurl.com/2j7yhp5t")
+
+				// URL https://www.emblemdao.com doesnt work?
+
 				.setLabel("Visit EmblemDAO")
 				.setStyle("LINK")
 		);
