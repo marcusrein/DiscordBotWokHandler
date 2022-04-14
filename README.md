@@ -1,5 +1,4 @@
-# DiscordBotWokHanlder
-
+# DiscordBotWokHandler
 
 https://docs.wornoffkeys.com/
 
