@@ -1,6 +1,6 @@
 # DiscordBotWokHandler
 
-Uses discord.js library combined with WOKCommands to create a basic demobot.o create a basic demobot.
+Uses discord.js library combined with WOKCommands to create a basic demobot.
 
 https://discord.js.org/#/
 
