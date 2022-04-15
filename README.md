@@ -34,14 +34,20 @@ npm install
 
 -   Run "npm run dev". This will set up your nodemon server for your bot to run. This should connect your code to the bot.
 
-Slash commands demoed:
+### Slash commands demoed:
+
 /add does a quick add inline demo
+
 /addrole allows making of a role based on the message of the user (not sure i understand this use case?)
+
 /buttons this will show various button demos
+
 /send will send a specific message to a specific channel
 
-Legacy commands demoed:
+### Legacy commands demoed:
+
 !collector shows a basic reaction collector/counter
+
 !ping basic "pong" response
 
 ```
