@@ -3,7 +3,7 @@ import { ICommand } from "wokcommands";
 
 export default {
 	category: "Configuration",
-	description: "Sends a Message",
+	description: "Sends a Message to a channel.",
 
 	permissions: ["ADMINISTRATOR"],
 

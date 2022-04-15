@@ -38,7 +38,7 @@ npm install
 
 /add does a quick add inline demo
 
-/addrole allows making of a role based on the message of the user (not sure i understand this use case?)
+/addrole allows making of a role based on the message of the user (not sure i understand this use case?). Uses sequential inline and select dropdown menus. "messageid" inline query should be filled with info on the userID that you'd like to have their roles assigned.
 
 /buttons this will show various button demos
 
@@ -49,6 +49,8 @@ npm install
 !collector shows a basic reaction collector/counter
 
 !ping basic "pong" response
+
+!help runs built-in help menu that autoupdates descriptions of commands built
 
 ```
 

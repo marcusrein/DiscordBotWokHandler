@@ -7,6 +7,8 @@ export default {
 	category: "Testing",
 	description: "Sends an embed",
 
+	testOnly: true,
+
 	permissions: ["ADMINISTRATOR"], // sets permissions for who can use this command
 
 	callback: async ({ message, text }) => {
@@ -24,7 +26,9 @@ export default {
 
 		const newMessage = await message.reply({ embeds: [embed] });
 
-		await new Promise((resolve) => setTimeout(resolve, 5000)); // shows you can change the embed after a certain amount of time
+		// shows you can change the embed after a certain amount of time
+
+		await new Promise((resolve) => setTimeout(resolve, 5000));
 
 		const newEmbed = newMessage.embeds[0];
 
