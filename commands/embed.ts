@@ -7,7 +7,7 @@ export default {
 	category: "Testing",
 	description: "Sends an embed",
 
-	permissions: ["ADMINISTRATOR"],
+	permissions: ["ADMINISTRATOR"], // sets permissions for who can use this command
 
 	callback: async ({ message, text }) => {
 		const embed = new MessageEmbed()
@@ -23,9 +23,13 @@ export default {
 			.addField("name three", "value three");
 
 		const newMessage = await message.reply({ embeds: [embed] });
-		await new Promise((resolve) => setTimeout(resolve, 5000));
+
+		await new Promise((resolve) => setTimeout(resolve, 5000)); // shows you can change the embed after a certain amount of time
+
 		const newEmbed = newMessage.embeds[0];
+
 		newEmbed.setTitle("Edited Title");
+
 		newMessage.edit({ embeds: [newEmbed] });
 	},
 } as ICommand;

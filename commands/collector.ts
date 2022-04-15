@@ -4,6 +4,7 @@ import { ICommand } from "wokcommands";
 export default {
 	category: "Testing",
 	description: "Testing",
+
 	testOnly: true,
 	ephemeral: true,
 
