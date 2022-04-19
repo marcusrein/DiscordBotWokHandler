@@ -1,5 +1,6 @@
 import { ICommand } from "wokcommands";
 import mongoose from "mongoose";
+import { User } from "../mongodb";
 
 export default {
 	category: "Testing",
@@ -10,13 +11,6 @@ export default {
 
 	callback: async () => {
 		// await mongoose.connect("proces.env.DATABASE_URI");
-
-		const userSchema = new mongoose.Schema({
-			ethAddress: String,
-			discordId: Number,
-		});
-
-		const User = mongoose.model("User", userSchema);
 
 		let randomString = Math.random().toString(36).substring(2, 20);
 

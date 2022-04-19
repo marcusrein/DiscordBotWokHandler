@@ -38,8 +38,6 @@ client.on("ready", async () => {
 		},
 	});
 
-	//Database Management
-
 	// Mongoose Code If not wanting to use WOKCommands
 	// await mongoose.connect(process.env.DATABASE_URI || "", {
 	// 	keepAlive: true,

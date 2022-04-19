@@ -1,18 +1,16 @@
 import { Client, TextChannel } from "discord.js";
 import WOKCommands from "wokcommands";
 import mongoose from "mongoose";
+import { User } from "../mongodb";
 
 export default () => {
-	const userSchema = new mongoose.Schema({
-		ethAddress: String,
-		discordId: Number,
-	});
-	const User = mongoose.model("User", userSchema);
-
 	const userEventEmitter = User.watch();
 
 	userEventEmitter.on("change", (change) =>
-		console.log(JSON.stringify(change))
+		console.log(
+			"\n\nTheres been a change in the remote database\n\n",
+			console.log(JSON.stringify(change))
+		)
 	);
 };
 
