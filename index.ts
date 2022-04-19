@@ -25,16 +25,20 @@ client.on("ready", async () => {
 	new WOKCommands(client, {
 		// The name of the local folder for your command files
 		commandsDir: path.join(__dirname, "commands"),
+		featuresDir: path.join(__dirname, "features"),
+
 		// Allow importing of .ts files if you are using ts-node
 		typeScript: true,
 		testServers: ["957994950711193600"],
 
 		// Allow easy Database connections:
-		// mongoUri: process.env.DATABASE_URI,
-		// dbOptions: {
-		// 	keepAlive: true,
-		// },
+		mongoUri: process.env.DATABASE_URI,
+		dbOptions: {
+			keepAlive: true,
+		},
 	});
+
+	//Database Management
 
 	// Mongoose Code If not wanting to use WOKCommands
 	// await mongoose.connect(process.env.DATABASE_URI || "", {
