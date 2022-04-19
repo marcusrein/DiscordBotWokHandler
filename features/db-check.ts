@@ -1,6 +1,6 @@
-import { Client, TextChannel } from "discord.js";
-import WOKCommands from "wokcommands";
-import mongoose from "mongoose";
+// import { Client, TextChannel } from "discord.js";
+// import WOKCommands from "wokcommands";
+// import mongoose from "mongoose";
 import { User } from "../mongodb";
 
 export default () => {
