@@ -34,6 +34,10 @@ npm install
 
 -   Run "npm run dev". This will set up your nodemon server for your bot to run. This should connect your code to the bot.
 
+## Feature Demoed:
+
+Check out the "features" folder for info on this. The bot will automatically assess if a mongoDb I hooked up was updated and print the update to the console. No commands needed, it autoruns. This directly connects to updates from the /usualsuspectspost slash command (see below)
+
 ## Slash commands demoed:
 
 /add does a quick add inline demo
@@ -42,7 +46,11 @@ npm install
 
 /buttons this will show various button demos
 
+/connectwallet will provide a locallink that goes to the example.js file. I ran the locallink through a localserver just to show the feature.
+
 /send will send a specific message to a specific channel
+
+/usualsuspectspost will post a mock discordId and ethAddress to a mongoDB I set up.
 
 ## Legacy commands demoed:
 
